@@ -73,4 +73,4 @@ class Minerstat(entity.Entity):
 
     @property
     def device_state_attributes(self):
-        return {"unit_of_measurement": self._unit, "status": self._status}
+        return {"unit_of_measurement": self._unit, "status": self._status, "temperature": self._temperature}
