@@ -68,6 +68,7 @@ class Minerstat(entity.Entity):
                 self._unit = data[self._config[CONF_RIG_NAME]]["mining"]["hashrate"][
                     "hashrate_unit"
                 ]
+                self._temperature = data[self._config[CONF_RIG_NAME]]["info"]["os"]["cpu_temp"]
 
     @property
     def device_state_attributes(self):
