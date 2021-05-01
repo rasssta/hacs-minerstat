@@ -33,6 +33,7 @@ class Minerstat(entity.Entity):
         self._config = config
         self._state = None
         self._unit = None
+        self._temperature = None
         self._status = None
         self.update()
 
