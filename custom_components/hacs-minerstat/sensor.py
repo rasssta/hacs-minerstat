@@ -35,6 +35,7 @@ class Minerstat(entity.Entity):
         self._unit = None
         self._temperature = None
         self._sync = None
+        self._type = None
         self._status = None
         self.update()
 
@@ -72,6 +73,7 @@ class Minerstat(entity.Entity):
                 ]
                 self._temperature = data[self._config[CONF_RIG_NAME]]["info"]["os"]["cpu_temp"]
                 self._sync = data[self._config[CONF_RIG_NAME]]["info"]["sync"]
+                self._type = data[self._config[CONF_RIG_NAME]]["info"]["type"]
 
     @property
     def device_state_attributes(self):
