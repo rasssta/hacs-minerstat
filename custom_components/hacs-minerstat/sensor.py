@@ -36,7 +36,7 @@ class Minerstat(entity.Entity):
         self._temperature = None
         self._sync = None
         self._type = None
-        self._groups = None
+        #self._groups = None
         self._status = None
         self._attributes = {}
         self.update()
@@ -84,7 +84,8 @@ class Minerstat(entity.Entity):
                 self._temperature = data[self._config[CONF_RIG_NAME]]["info"]["os"]["cpu_temp"]
                 self._sync = data[self._config[CONF_RIG_NAME]]["info"]["sync"]
                 self._type = data[self._config[CONF_RIG_NAME]]["info"]["type"]
-                #self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]               
+                #self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]            
+                self._attributes = {}
                 self._attributes[groups] = data[self._config[CONF_RIG_NAME]]["info"]["groups"]
 
 
