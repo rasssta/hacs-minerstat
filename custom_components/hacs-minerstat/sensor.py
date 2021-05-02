@@ -85,7 +85,7 @@ class Minerstat(entity.Entity):
                 self._sync = data[self._config[CONF_RIG_NAME]]["info"]["sync"]
                 self._type = data[self._config[CONF_RIG_NAME]]["info"]["type"]
                 #self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]               
-                self._attributes[groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]]
+                self._attributes[groups] = data[self._config[CONF_RIG_NAME]]["info"]["groups"]
 
 
     #@property
