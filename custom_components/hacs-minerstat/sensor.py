@@ -56,10 +56,7 @@ class Minerstat(entity.Entity):
         """Return the state of the device."""
         return self._state
     
-    @property
-    def state_attributes(self):
-        """Return the device state attributes."""
-        return self._attributes
+
 
     def update(self):
         req = urllib.request.Request(
@@ -87,7 +84,10 @@ class Minerstat(entity.Entity):
                 #self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]               
                 self._attributes[groups] = data[self._config[CONF_RIG_NAME]]["info"]["groups"]
 
-
+    @property
+    def state_attributes(self):
+        """Return the device state attributes."""
+        return self._attributes
     #@property
     #def device_state_attributes(self):
         #return {"unit_of_measurement": self._unit, "status": self._status, "temperature": self._temperature, "sync": self._sync, "type": self._type, "groups": self._groups}
