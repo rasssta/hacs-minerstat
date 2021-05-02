@@ -36,21 +36,30 @@ class Minerstat(entity.Entity):
         self._temperature = None
         self._sync = None
         self._type = None
-        self._groups = None
+        #self._group = None
         self._status = None
+        self._attributes = {}
         self.update()
 
     @property
     def name(self):
+        """Return the name of the sensor."""
         return self._config[CONF_NAME]
 
     @property
     def icon(self):
+        """Icon to use in the frontend, if any."""
         return "mdi:bitcoin"
 
     @property
     def state(self):
+        """Return the state of the device."""
         return self._state
+    
+    @property
+    def state_attributes(self):
+        """Return the device state attributes."""
+        return self._attributes
 
     def update(self):
         req = urllib.request.Request(
@@ -75,8 +84,10 @@ class Minerstat(entity.Entity):
                 self._temperature = data[self._config[CONF_RIG_NAME]]["info"]["os"]["cpu_temp"]
                 self._sync = data[self._config[CONF_RIG_NAME]]["info"]["sync"]
                 self._type = data[self._config[CONF_RIG_NAME]]["info"]["type"]
-                self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]
+                #self._groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]               
+                self._attributes[groups = data[self._config[CONF_RIG_NAME]]["info"]["groups"]]
 
-    @property
-    def device_state_attributes(self):
-        return {"unit_of_measurement": self._unit, "status": self._status, "temperature": self._temperature, "sync": self._sync, "type": self._type, "groups": self._groups}
+
+    #@property
+    #def device_state_attributes(self):
+        #return {"unit_of_measurement": self._unit, "status": self._status, "temperature": self._temperature, "sync": self._sync, "type": self._type, "groups": self._groups}
